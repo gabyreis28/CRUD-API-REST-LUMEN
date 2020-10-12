@@ -18,8 +18,20 @@ $router->get('/', function () use ($router) {
 // $router->get('/teste', function () use ($router) {
 //     return '[routes/web.php] Metodo Get URL: /teste';
 // });
+
 $router->get('/usuarios', 'UsuarioController@mostrarTodosUsuarios');
-$router->post('/usuarios/cadastrar', 'UsuarioController@cadastrarUsuarios');
-$router->get('/usuario/{id}', 'UsuarioController@mostarUmUsuario');
-$router->put('/usuario/{id}/atualizar', 'UsuarioController@atualizarUsuario');
-$router->delete('/usuario/{id}/deletar', 'UsuarioController@deletarUsuario');
+
+//Grupo de Rotas
+$router->group(['prefix' => 'usuario'], function () use ($router){
+    $router->post('/cadastrar', 'UsuarioController@cadastrarUsuarios');
+    $router->get('/{id}', 'UsuarioController@mostarUmUsuario');
+    $router->put('/{id}/atualizar', 'UsuarioController@atualizarUsuario');
+    $router->delete('/{id}/deletar', 'UsuarioController@deletarUsuario');
+    
+});
+
+$router->post('/login','UsuarioController@usuarioLogin');
+$router->post('/info','UsuarioController@mostrarUsuarioAutenticado');
+$router->post('/logout','UsuarioController@usuarioLogout');
+
+
