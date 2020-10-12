@@ -1,0 +1,1 @@
+[12-Oct-2020 14:05:17 UTC] PHP Fatal error:  Class 'Illuminate\Foundation\Http\FormRequest' not found in /home/gabriela/Gabi/lumen-curso/app/Http/Requests/UserLoginRequest.php on line 6
